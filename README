@@ -1,0 +1,4 @@
+A file is splitted on a block level deduplication. These blocks may locally and/or in the network are distributed and saved. Since it comes with small block sizes, with many duplications, it saves a lot of istorage; you don't have to transfer a file completely from one user to another. In addition, each block is completely meaningless, it is not detectable, which data is exchanged from where and for what purpose. - Only the key file allows to restore the original file.
+
+Simple Share is a collection of smaller programs that have been created dedicated to exactly one task.
+

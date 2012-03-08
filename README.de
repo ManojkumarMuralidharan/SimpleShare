@@ -1,0 +1,3 @@
+Eine Datei wird auf blockebene dedupliziert. Diese Blöcke können lokal und/oder im Netzwerk verteilt und gesichert werden. Da es, bei kleinen Blockgrößen, zu vielen Dopplungen kommt, spart man langfristig sehr viel Speicherplatz; auch muss eine Datei nicht mehr vollständig von einem Teilnehmer zum anderen übertragen werden. Hinzu kommt, dass jeder Block für sich völlig aussagelos ist; es ist nicht nachweisbar, welche Daten von wo und für welchen Zweck ausgetauscht werden. - Einzig die Schlüsseldatei erlaubt es, die Ausgangsdatei wiederherzustellen.
+
+SimpleShare besteht aus einer Sammlung von kleineren Programmen, die dediziert für genau eine Aufgabe geschaffen wurden.
