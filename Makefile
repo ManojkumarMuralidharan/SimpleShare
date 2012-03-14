@@ -1,4 +1,4 @@
-#CFLAGS += -m32
+CFLAGS += -m64
 CFLAGS += -Wall -I lib/md5-1.3.0 -g
 #CFLAGS +=-O3
 LIB += lib/common.o lib/config.o lib/error.o lib/md5-1.3.0/md5.o

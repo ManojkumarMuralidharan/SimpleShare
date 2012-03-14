@@ -115,6 +115,10 @@ void store(char *src) {
 			/* write data-file */
 			FILE *out;
 			out = fopen(dirfile, "wb");
+			if (out == NULL) {
+				printf ( "\nERROR: No inodes available on device.\n" );
+				exit(EXIT_FAILURE);
+			}
 			fwrite(buffer, 1, size, out);
 			fclose(out);
 		}
