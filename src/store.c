@@ -18,6 +18,7 @@
 
 #include "common.h"
 #include "config.h"
+#include "la_file.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -37,7 +38,7 @@ int main(int argc, char *argv[]) {
 
 	char *filename = argv[1];
 
-	if (!fileExists(filename)) {
+	if (!file_exists(filename)) {
 		printf ( "ERROR: File (%s) doesn't exists.\n", filename );
 		exit(EXIT_FAILURE);
 	}
@@ -107,7 +108,7 @@ void store(char *src) {
 		memcpy(dirfile+dirsize+1+4+1, signature, KEY_SIZE);
 
 		printf ( "FILE-%d: %s", count, signature );
-		if (fileExists(dirfile)) {
+		if (file_exists(dirfile)) {
 			++exist;
 			size_save += size;
 			printf ( " (EXISTS)" );

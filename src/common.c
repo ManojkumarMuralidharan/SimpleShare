@@ -2,6 +2,8 @@
 #include "common.h"
 #include "error.h"
 #include "md5.h"
+#include "la_common.h"
+#include "la_file.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>

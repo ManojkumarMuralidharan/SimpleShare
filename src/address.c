@@ -20,6 +20,8 @@
 #include "common.h"
 #include "error.h"
 #include "config.h"
+#include "la_common.h"
+#include "la_file.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -104,7 +106,7 @@ void releaseAddress() {
 }
 
 BOOL isLock() {
-	return (fileExists(file_lock));
+	return (file_exists(file_lock));
 }
 
 void createLock() {
@@ -121,7 +123,7 @@ void createLock() {
 }
 
 void removeLock() {
-	if (!fileExists(file_lock)) return;
+	if (!file_exists(file_lock)) return;
 
 	int error = remove(file_lock);
 	if (error) {

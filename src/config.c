@@ -1,5 +1,6 @@
 #include "common.h"
 #include "config.h"
+#include "la_file.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -59,7 +60,7 @@ void initConfig() {
 	if (server_port == -1) setConfigServerPort(-1);
 
 	/* check if config already exists */
-	if (!fileExists(file_config)) {
+	if (!file_exists(file_config)) {
 		saveConfig();
 	}
 

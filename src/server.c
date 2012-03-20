@@ -19,6 +19,7 @@
 #include "common.h"
 #include "config.h"
 #include "address.h"
+#include "la_file.h"
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -212,7 +213,7 @@ PARAMETER command_download(int sock_2, char *value) {
 
 	/* check if file exists */
 	char *filename = keyToFilename(value);
-	if (!fileExists(filename)) {
+	if (!file_exists(filename)) {
 		free(filename);
 		strcpy(response.key, "ERROR");
 		strcpy(response.value, "file not found");

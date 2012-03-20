@@ -20,6 +20,7 @@
 #include "error.h"
 #include "config.h"
 #include "address.h"
+#include "la_file.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -48,7 +49,7 @@ int main(int argc, char *argv[]) {
 
 	char *filename = argv[1];
 	char *filename_abs = getAbsoluteKeyname(filename);
-	if (!fileExists(filename_abs)) {
+	if (!file_exists(filename_abs)) {
 		free(filename_abs);
 		printf ( "ERROR: File (%s) doesn't exists.\n", filename );
 		exit(EXIT_FAILURE);
@@ -112,7 +113,7 @@ void download(char *src) {
 		keyfilename = keyToFilename(key);
 		printf ( "FILE-%lld: %s\t", ++count, key );
 
-		if (fileExists(keyfilename)) {
+		if (file_exists(keyfilename)) {
 			printf ( "EXISTS\n" );
 			free(keyfilename);                  /* free memory */
 			continue;

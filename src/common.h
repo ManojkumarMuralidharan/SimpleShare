@@ -2,9 +2,7 @@
 #ifndef COMMON_H
 #define COMMON_H
 
-#define BOOL int
-#define TRUE 1
-#define FALSE 0
+#include "la_common.h"
 
 #ifdef __unix__
 	#include <unistd.h>
@@ -49,7 +47,6 @@ typedef struct {
 } BLOCK;
 
 void showCopyright();
-BOOL fileExists(char *name);
 char *getFilename(char *file);
 BOOL directoryExists(char *name);
 char *calculateSignature(char *string, size_t size); /* TODO: make it safe!!! */
@@ -65,6 +62,7 @@ char *keyToFilename(char *key);
 char *encodeString(char *string, size_t size);
 char *decodeString(char *string);
 
-BOOL blockExists(BLOCK block);
-void blockRead(
+BOOL blockExists(BLOCK *block);
+void blockRead(BLOCK *block);
+void blockWrite(BLOCK *block);
 #endif
