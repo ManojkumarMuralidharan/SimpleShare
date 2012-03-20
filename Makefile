@@ -1,7 +1,7 @@
 CFLAGS += -m64
-CFLAGS += -Wall -I lib/md5-1.3.0 -g
+CFLAGS += -Wall -I lib/md5-1.3.0 -I ../../Laukien/lib/la-C -g
 #CFLAGS +=-O3
-LIB += lib/common.o lib/config.o lib/error.o lib/md5-1.3.0/md5.o
+LIB += lib/common.o lib/config.o lib/error.o lib/md5-1.3.0/md5.o ../../Laukien/lib/la-C/la_64.a
 
 
 all: library test compile

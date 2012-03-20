@@ -17,7 +17,7 @@
 #endif
 
 #define NAME "SimpleShare"
-#define VERSION "0.2"
+#define VERSION "0.3"
 #define AUTHOR "Stephan Laukien"
 
 #define BLOCK_SIZE 4*1024
@@ -42,6 +42,11 @@ typedef struct {
 	int status;
 } PARAMETER;
 
+typedef struct {
+	char data[BLOCK_SIZE];
+	unsigned int size;
+	char checksum[KEY_SIZE];
+} BLOCK;
 
 void showCopyright();
 BOOL fileExists(char *name);
@@ -59,4 +64,7 @@ char *getAbsoluteRestorename(char *filename);
 char *keyToFilename(char *key);
 char *encodeString(char *string, size_t size);
 char *decodeString(char *string);
+
+BOOL blockExists(BLOCK block);
+void blockRead(
 #endif
