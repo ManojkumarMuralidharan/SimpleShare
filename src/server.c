@@ -20,6 +20,7 @@
 #include "config.h"
 #include "address.h"
 #include "la_file.h"
+#include "la_string.h"
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -152,7 +153,7 @@ PARAMETER command_host(int sock_2, char *value) {
 	char line[ADDRESS_LINE_SIZE+1];
 	char *linep = &line[0];
 	while (fgets(line, ADDRESS_LINE_SIZE, online_file) != NULL) {
-		linep = trimString(linep);
+		linep = string_trim(linep);
 		if (strlen(line) == 0) continue;
 		if (strcmp(line, value) != 0) continue;
 

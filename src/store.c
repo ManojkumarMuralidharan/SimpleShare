@@ -68,7 +68,7 @@ void store(char *src) {
     char buffer[BLOCK_SIZE+1];                  /* buffer +1 for final \0 */
 
 	/* database */
-	char *srcname = getFilename(src);
+	char *srcname = file_name(src);
 	char *keyname;
     keyname = (char*)malloc(strlen(dst_key)+1+strlen(srcname)+1+14+1+3+1); /* dst_key/src.timestamp.key+\0 */
 	if (keyname == NULL) {

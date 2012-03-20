@@ -21,6 +21,7 @@
 #include "config.h"
 #include "address.h"
 #include "la_file.h"
+#include "la_string.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -84,7 +85,7 @@ void loadOnline() {
 
 	char line[ADDRESS_KEY_SIZE];
 	while(fgets(line, ADDRESS_KEY_SIZE, file) != NULL) {
-		trimString(line);
+		string_trim(line);
 		ADDRESS *adr;
         adr = getAddressByName(line);           /* load online-friends into memory */
         adr->status = DOWNLOAD_STATUS;          /* set the starting status which means how many tries will be done */
@@ -106,7 +107,7 @@ void download(char *src) {
 	char key[KEY_SIZE+1];
 	unsigned long long count = 0;
 	while (fgets(key, KEY_SIZE+1, file) != NULL) {
-		trimString(key);
+		string_trim(key);
 		key[KEY_SIZE] = '\0';
 		if (strlen(key) != KEY_SIZE) continue;
 

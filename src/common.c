@@ -2,8 +2,7 @@
 #include "common.h"
 #include "error.h"
 #include "md5.h"
-#include "la_common.h"
-#include "la_file.h"
+#include "la_string.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -22,17 +21,6 @@ char hostname[1024];
 void showCopyright(char *prg) {
 	printf ( "\n%s - %s v.%s (%s)\n", NAME, prg, VERSION, __DATE__ );
 	printf ( "(c) 2011-2012 by %s\n\n", AUTHOR );
-}
-
-BOOL fileExists(char *name) {
-	struct stat st;
-	return (stat(name, &st) == 0);
-}
-
-BOOL directoryExists(char *name) {
-	struct stat st;
-	return (stat(name, &st) == 0);
-
 }
 
 char *calculateSignature(char *string, size_t size) {
@@ -89,56 +77,6 @@ char *getTimestampAsString() {
 	return date;
 }
 
-char *getFilename(char *file) {
-	int i;
-	for (i = strlen(file)-1; i >= -1; i--) {
-		if (i == -1) break;                     /* not found */
-		if (file[i] == '/') break;
-	}
-
-	int l = strlen(file) - i;                   /* len + 1 */
-	char *name = malloc(l);
-	if(name == NULL) {
-		fprintf ( stderr, "\ndynamic memory allocation failed\n" );
-		exit (EXIT_FAILURE);
-	}
-
-	memcpy(name, file + i + 1, l);              /* name + '\0' */
-
-	return name;
-}
-
-char *trimString(char *string) {
-	int len = strlen(string);
-
-	int s;
-	for (s=0; s<len; s++) {
-		if(isalnum(string[s])) break;
-	}
-
-	int e;
-	for (e=len-1; e>s; e--) {
-		if(isalnum(string[e])) break;
-	}
-
-	if (s == 0 && e == len-1) return string;    /* nothing to change */
-
-	if (s != 0) {
-//		int i;
-//		for (i=0; i<len-s; i++) {
-//			string[i] = string[i+s];
-//		}
-		memcpy(string, string+s, len-s);
-		string[len-s] = '\0';
-	}
-
-	if (e != len-1) {
-		string[e-s+1] = '\0';
-	}
-
-	return string;
-}
-
 PARAMETER stringToParameter(char *string) {
 	/* set parameters */
 	PARAMETER param;
@@ -146,7 +84,7 @@ PARAMETER stringToParameter(char *string) {
 	param.value[0] = '\0';
     param.status = 0;                           /* parameter invalid */
 
-	trimString(string);
+	string_trim(string);
 
     if (strlen(string) < 3) return param;       /* invalid */
     if (strchr(string, '#')) return param;      /* comment */

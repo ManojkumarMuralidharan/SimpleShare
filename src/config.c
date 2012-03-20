@@ -1,7 +1,7 @@
 #include "common.h"
 #include "config.h"
 #include "la_file.h"
-
+#include "la_directory.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -225,7 +225,7 @@ void setConfigStore(char *value) {
 	}
 
 	mkdir(dir_store, 0755);
-	if (!directoryExists(dir_store)) {
+	if (!directory_exists(dir_store)) {
 		printf ( "ERROR: Directory (%s) doesn't exists.\n", dir_store );
 		exit(EXIT_FAILURE);
 	}
@@ -249,7 +249,7 @@ void setConfigRestore(char *value) {
 	}
 
 	mkdir(dir_restore, 0755);
-	if (!directoryExists(dir_restore)) {
+	if (!directory_exists(dir_restore)) {
 		printf ( "ERROR: Directory (%s) doesn't exists.\n", dir_restore );
 		exit(EXIT_FAILURE);
 	}
@@ -273,7 +273,7 @@ void setConfigKey(char *value) {
 	}
 	
 	mkdir(dir_key, 0755);
-	if (!directoryExists(dir_key)) {
+	if (!directory_exists(dir_key)) {
 		printf ( "ERROR: Directory (%s) doesn't exists.\n", dir_key );
 		exit(EXIT_FAILURE);
 	}

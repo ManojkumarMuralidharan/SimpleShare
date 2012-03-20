@@ -22,6 +22,8 @@
 #include "config.h"
 #include "la_common.h"
 #include "la_file.h"
+#include "la_directory.h"
+#include "la_string.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -205,7 +207,7 @@ ADDRESS *getAddressByName(char *name) {
 
 	char line[ADDRESS_LINE_SIZE+1];
 	while (fgets(line, ADDRESS_LINE_SIZE, file) != NULL) {
-		trimString(line);
+		string_trim(line);
 		if (strstr(line, name) != NULL) {
 			ADDRESS tmp = stringToAddress(line);
 			addAddress(&tmp);
